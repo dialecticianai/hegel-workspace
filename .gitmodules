@@ -1,0 +1,6 @@
+[submodule "hegel-cli"]
+	path = hegel-cli
+	url = https://github.com/dialecticianai/hegel-cli.git
+[submodule "hegel-mirror"]
+	path = hegel-mirror
+	url = https://github.com/dialecticianai/hegel-mirror.git

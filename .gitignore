@@ -1,0 +1,19 @@
+# Rust build artifacts
+/target/
+Cargo.lock
+
+# Vendored dependencies (not tracked in submodules)
+hegel-mirror/vendor/egui-twemoji/
+
+# macOS
+.DS_Store
+
+# Editor artifacts
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Hegel state (if running hegel from workspace root)
+.hegel/
