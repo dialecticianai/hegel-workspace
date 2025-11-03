@@ -4,3 +4,6 @@
 [submodule "hegel-mirror"]
 	path = hegel-mirror
 	url = https://github.com/dialecticianai/hegel-mirror.git
+[submodule "hegel-pm"]
+	path = hegel-pm
+	url = https://github.com/dialecticianai/hegel-pm.git

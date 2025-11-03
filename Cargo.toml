@@ -1,5 +1,5 @@
 [workspace]
-members = ["hegel-cli", "hegel-mirror"]
+members = ["hegel-cli", "hegel-mirror", "hegel-pm"]
 resolver = "2"
 
 [profile.release]
