@@ -1,10 +1,10 @@
 # Hegel Workspace
 
-**Unified workspace for Hegel CLI and Mirror review UI**
+**Unified workspace for Hegel CLI, Hegel Mirror review UI, and Hegel PM**
 
 [![Built with DDD](https://img.shields.io/badge/built_with-DDD-blue)](https://github.com/dialecticianai/ddd-book/)
 
-This workspace bundles both `hegel-cli` and `hegel-mirror` as git submodules, allowing a single build command to compile and install both binaries.
+This workspace bundles `hegel-cli`, `hegel-mirror`, and `hegel-pm` as git submodules, allowing a single build command to compile and install all binaries.
 
 ---
 
@@ -16,13 +16,16 @@ This workspace bundles both `hegel-cli` and `hegel-mirror` as git submodules, al
 - State tracking and phase transitions
 - Git guardrails and rules engine
 
-**Mirror** is the companion GUI for reviewing Markdown documents (SPEC.md, PLAN.md, etc.) with inline commenting.
+**Hegel Mirror** is the companion GUI for reviewing Markdown documents (SPEC.md, PLAN.md, etc.) with inline commenting.
+
+**Hegel PM** is the project manager with web UI that auto-discovers Hegel projects, visualizes workflow states, and provides a unified dashboard for managing multiple projects.
 
 Together, they enable iterative, learning-focused development with clear documentation artifacts.
 
 See:
 - [hegel-cli](https://github.com/dialecticianai/hegel-cli) - CLI workflow orchestrator
-- [hegel-mirror](https://github.com/dialecticianai/hegel-mirror) - Markdown review UI
+- [hegel-mirror](https://github.com/dialecticianai/hegel-mirror) - Hegel Mirror review UI
+- [hegel-pm](https://github.com/dialecticianai/hegel-pm) - Hegel PM project manager
 - [ddd-book](https://github.com/dialecticianai/ddd-book) - DDD methodology reference
 
 ---
@@ -48,11 +51,13 @@ cd hegel-workspace
 This installs:
 - `hegel` → `~/.cargo/bin/hegel`
 - `mirror` → `~/.cargo/bin/mirror`
+- `hegel-pm` → `~/.cargo/bin/hegel-pm`
 
 Verify:
 ```bash
 hegel --version
 mirror --help
+hegel-pm --help
 ```
 
 ---
@@ -108,6 +113,7 @@ hegel-workspace/
 ├── hegel-mirror/           # Mirror GUI submodule
 │   └── vendor/
 │       └── egui-twemoji/   # Vendored emoji library (not in git)
+├── hegel-pm/               # Project manager web UI submodule
 └── scripts/
     └── build-and-install.sh
 ```
@@ -124,18 +130,18 @@ This repo uses Cargo's workspace feature to build multiple crates together:
 
 ```toml
 [workspace]
-members = ["hegel-cli", "hegel-mirror"]
+members = ["hegel-cli", "hegel-mirror", "hegel-pm"]
 resolver = "2"
 ```
 
 Benefits:
 - Shared dependency compilation (faster builds)
-- Single `cargo build` command for both binaries
+- Single `cargo build` command for all binaries
 - Unified release profile optimization
 
 ### Submodules
 
-Both `hegel-cli` and `hegel-mirror` are git submodules pointing to their respective repos. This allows:
+`hegel-cli`, `hegel-mirror`, and `hegel-pm` are all git submodules pointing to their respective repos. This allows:
 - Independent development in each repo
 - Version pinning in the workspace
 - Easy updates via `git submodule update`
@@ -170,7 +176,7 @@ Users will run:
 brew install hegel
 ```
 
-And get both `hegel` and `mirror` installed automatically.
+And get `hegel`, `mirror`, and `hegel-pm` installed automatically.
 
 ---
 
@@ -213,7 +219,7 @@ cargo build --release
 
 ## License
 
-Both `hegel-cli` and `hegel-mirror` are licensed under the Server Side Public License v1 (SSPL).
+`hegel-cli`, `hegel-mirror`, and `hegel-pm` are all licensed under the Server Side Public License v1 (SSPL).
 
 See individual submodule repos for full license text.
 
@@ -224,5 +230,6 @@ See individual submodule repos for full license text.
 Development happens in the individual repos:
 - [hegel-cli issues](https://github.com/dialecticianai/hegel-cli/issues)
 - [hegel-mirror issues](https://github.com/dialecticianai/hegel-mirror/issues)
+- [hegel-pm issues](https://github.com/dialecticianai/hegel-pm/issues)
 
 For workspace-specific issues (build scripts, submodule coordination), open an issue here.
